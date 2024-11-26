@@ -1,0 +1,82 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+<div class="row">
+    <div class="col-md-12">
+        <EditForm Model="inputModel" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+            <legend>Calidad</legend>
+
+            <div class="form-check form-switch">
+                <label class="form-label" for="CedulaCalidadGeneradaCliente">Cedula de calidad generada por el cliente</label>
+                <InputCheckbox @bind-Value="inputModel.CedulaCalidadGeneradaCliente" id="CedulaCalidadGeneradaCliente" class="darker-border-checkbox form-check-input" />
+                <ValidationMessage For="@(() => inputModel.CedulaCalidadGeneradaCliente)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.DiasOJTRequeridos" id="DiasOJTRequeridos" class="form-control" placeholder=">Días de OJT requeridos" />
+                <label class="form-label" for="DiasOJTRequeridos">Días de OJT requeridos</label>
+                <ValidationMessage For="@(() => inputModel.DiasOJTRequeridos)" class="text-danger" />
+
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="inputModel.PorcentajeMuestraCalidad" id="PorcentajeMuestraCalidad" class="form-control" placeholder="% de la muestra de calidad"/>
+                <label for="PorcentajeMuestraCalidad" class="form-label">% de la muestra de calidad</label>
+                <ValidationMessage For="@(() => inputModel.PorcentajeMuestraCalidad)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.Analytics" id="Analytics" class="darker-border-checkbox form-check-input" />
+                <label class="form-label" for="Analytics">Analytics</label>
+                <ValidationMessage For="@(() => inputModel.Analytics)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.CertificacionAdicionalQA" id="CertificacionAdicionalQA" class="darker-border-checkbox form-check-input" />
+                <label class="form-label" for="CertificacionAdicionalQA">Certificación adicional de QA</label>
+                <ValidationMessage For="@(() => inputModel.CertificacionAdicionalQA)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.Detallar" id="Detallar" class="form-control" placeholder="Detallar"/>
+                <label class="form-label" for="Detallar">Detallar</label>
+                <ValidationMessage For="@(() => inputModel.Detallar)" />
+            </div>
+
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private InputModel inputModel = new InputModel();
+    private void OnValidSubmit()
+    {
+        // Handle the form submission
+    }
+
+    private sealed class InputModel
+    {
+        // Calidad
+        // Cedula de calidad generada por el cliente Boolean
+        [Required]
+        public bool CedulaCalidadGeneradaCliente { get; set; }
+        // Días de OJT requeridos  Varchar(50)
+        [Required]
+        public string DiasOJTRequeridos { get; set; }
+        // % de la muestra de calidad Float
+        [Required]
+        public float PorcentajeMuestraCalidad { get; set; }
+        // Analytics Boolean
+        [Required]
+        public bool Analytics { get; set; }
+        // Certificación adicional de QA   Boolean
+        [Required]
+        public bool CertificacionAdicionalQA { get; set; }
+        // Detallar    Varchar(50)
+        [Required]
+        public string Detallar { get; set; }
+
+    }
+
+}

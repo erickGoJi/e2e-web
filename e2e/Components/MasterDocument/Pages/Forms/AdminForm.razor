@@ -1,0 +1,79 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+<div class="row">
+    <div class="col-md-12">
+        <EditForm Model="inputModel" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.PeriodosCorteFacturacion" id="PeriodosCorteFacturacion" class="form-control" />
+                <label class="form-label" for="PeriodosCorteFacturacion">Periodos de corte de facturación</label>
+                <ValidationMessage For="@(() => inputModel.PeriodosCorteFacturacion)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <label class="form-label" for="SegurosFianzasOperarCampania">Seguros o fianzas para operar campaña</label>
+                <InputCheckbox @bind-Value="inputModel.SegurosFianzasOperarCampania" id="SegurosFianzasOperarCampania" class="darker-border-checkbox form-check-input" />
+                <ValidationMessage For="@(() => inputModel.SegurosFianzasOperarCampania)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.Detallar" id="Detallar" class="form-control" />
+                <label class="form-label" for="Detallar">Detallar</label>
+                <ValidationMessage For="@(() => inputModel.Detallar)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.PeriodoTiempo" id="PeriodoTiempo" class="form-control" />
+                <label class="form-label" for="PeriodoTiempo">Periodo de tiempo</label>
+                <ValidationMessage For="@(() => inputModel.PeriodoTiempo)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <label class="form-label" for="ActivosAdicionalesEstacionesOperar">Activos adicionales a las estaciones para operar</label>
+                <InputCheckbox @bind-Value="inputModel.ActivosAdicionalesEstacionesOperar" id="ActivosAdicionalesEstacionesOperar" class="darker-border-checkbox form-check-input" />
+                <ValidationMessage For="@(() => inputModel.ActivosAdicionalesEstacionesOperar)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.DetallarActivosAdicionalesEstacionesOperar" id="DetallarActivosAdicionalesEstacionesOperar" class="form-control" />
+                <label class="form-label" for="DetallarActivosAdicionalesEstacionesOperar">Detallar</label>
+                <ValidationMessage For="@(() => inputModel.DetallarActivosAdicionalesEstacionesOperar)" />
+            </div>
+
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private InputModel inputModel = new InputModel();
+    private void OnValidSubmit()
+    {
+        // Handle the form submission
+    }
+
+    private sealed class InputModel
+    {
+        // Admin
+        // Periodos de corte de facturación Varchar(50)
+        [Required]
+        public string PeriodosCorteFacturacion { get; set; }
+        // Seguros o fianzas para operar campaña   Boolean
+        [Required]
+        public bool SegurosFianzasOperarCampania { get; set; }
+        // Detallar    Varchar(50)
+        [Required]
+        public string Detallar { get; set; }
+        // Periodo de tiempo Varchar(50)
+        [Required]
+        public string PeriodoTiempo { get; set; }
+        // Activos adicionales a las estaciones para operar Boolean
+        [Required]
+        public bool ActivosAdicionalesEstacionesOperar { get; set; }
+        // Detallar Varchar(50)
+        [Required]
+        public string DetallarActivosAdicionalesEstacionesOperar { get; set; }
+
+    }
+}

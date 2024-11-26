@@ -1,0 +1,435 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+<div class="row">
+    <div class="col-md-12">
+        <EditForm Model="inputModel" OnInvalidSubmit="OnValidSubmitAsync">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <legend>Infraestructura</legend>
+            
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.ConnectionClientPentafon" class="form-check-input" />
+                <label class="form-check">Conexión entre el cliente/Pentafon para el intercambio de datos/voz</label>
+                <ValidationMessage For="@(() => inputModel.ConnectionClientPentafon)" />
+            </div>
+
+            <div class="form-group">
+                <label for="ConnectionType">Tipo de conexión</label>
+                <InputText @bind-Value="inputModel.ConnectionType" class="form-control" id="ConnectionType" />
+                <ValidationMessage For="@(() => inputModel.ConnectionType)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.VPN" class="form-check-input" />
+                <label class="form-check">VPN</label>
+                <ValidationMessage For="@(() => inputModel.VPN)" />
+            </div>
+
+            <div class="form-group">
+                <label for="BandwidthConsumption">Consumo estimado de ancho de banda</label>
+                <InputText @bind-Value="inputModel.BandwidthConsumption" class="form-control" id="BandwidthConsumption" />
+                <ValidationMessage For="@(() => inputModel.BandwidthConsumption)" />
+            </div>
+
+            <div class="form-group">
+                <label for="TelephonySystem">Sistema de telefonía a utilizar para las interacciones</label>
+                <InputText @bind-Value="inputModel.TelephonySystem" class="form-control" id="TelephonySystem" />
+                <ValidationMessage For="@(() => inputModel.TelephonySystem)" />
+            </div>
+
+            <div class="form-group">
+                <label for="Owner">Propietario</label>
+                <InputText @bind-Value="inputModel.Owner" class="form-control" id="Owner" />
+                <ValidationMessage For="@(() => inputModel.Owner)" />
+            </div>
+
+            <div class="form-group">
+                <label for="ApplicationNameVersion">Nombre y versión de la aplicación</label>
+                <InputText @bind-Value="inputModel.ApplicationNameVersion" class="form-control" id="ApplicationNameVersion" />
+                <ValidationMessage For="@(() => inputModel.ApplicationNameVersion)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.AdditionalApplications" class="form-check-input" />
+                <label class="form-check">Aplicaciones adicionales para operar la campaña</label>
+                <ValidationMessage For="@(() => inputModel.AdditionalApplications)" />
+            </div>
+
+            <div class="form-group">
+                <label for="AdditionalApplicationsDetail">Detallar</label>
+                <InputText @bind-Value="inputModel.AdditionalApplicationsDetail" class="form-control" id="AdditionalApplicationsDetail" />
+                <ValidationMessage For="@(() => inputModel.AdditionalApplicationsDetail)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.DIDPortability" class="form-check-input" />
+                <label class="form-check">Portabilidad de DID's</label>
+                <ValidationMessage For="@(() => inputModel.DIDPortability)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.BCPDRP" class="form-check-input"/>
+                <label class="form-check">BCP/DRP</label>
+                <ValidationMessage For="@(() => inputModel.BCPDRP)" />
+            </div>
+
+            <div class="form-group">
+                <label for="RequiredPercentage">Porcentaje requerido</label>
+                <InputNumber @bind-Value="inputModel.RequiredPercentage" class="form-control" id="RequiredPercentage" />
+                <ValidationMessage For="@(() => inputModel.RequiredPercentage)" />
+            </div>
+
+            <legend>Desarrollo</legend>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.CRM" class="form-check-input"/>
+                <label class="form-check">CRM</label>
+                <ValidationMessage For="@(() => inputModel.CRM)" />
+            </div>
+
+            <div class="form-group">
+                <label for="API">API</label>
+                <InputText @bind-Value="inputModel.API" class="form-control" id="API" />
+                <ValidationMessage For="@(() => inputModel.API)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.WebService" class="form-check-input"/>
+                <label class="form-check">Web service</label>
+                <ValidationMessage For="@(() => inputModel.WebService)" />
+            </div>
+
+            <div class="form-group">
+                <label for="Other">Otro (detallar)</label>
+                <InputText @bind-Value="inputModel.Other" class="form-control" id="Other" />
+                <ValidationMessage For="@(() => inputModel.Other)" />
+            </div>
+
+            <legend>Soporte</legend>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.DifferentEquipmentSpecifications" class="form-check-input"/>
+                <label class="form-check">Especificaciones de equipo diferentes de estándar Pentafon</label>
+                <ValidationMessage For="@(() => inputModel.DifferentEquipmentSpecifications)" />
+            </div>
+
+            <div class="form-group">
+                <label for="DifferentEquipmentSpecificationsDetail">Detallar</label>
+                <InputText @bind-Value="inputModel.DifferentEquipmentSpecificationsDetail" class="form-control" id="DifferentEquipmentSpecificationsDetail" />
+                <ValidationMessage For="@(() => inputModel.DifferentEquipmentSpecificationsDetail)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.ApplicationsToInstall" class="form-check-input"/>
+                <label class="form-check">Aplicaciones a instalar en los equipos</label>
+                <ValidationMessage For="@(() => inputModel.ApplicationsToInstall)" />
+            </div>
+
+            <div class="form-group">
+                <label for="ApplicationsToInstallDetail">Detallar</label>
+                <InputText @bind-Value="inputModel.ApplicationsToInstallDetail" class="form-control" id="ApplicationsToInstallDetail" />
+                <ValidationMessage For="@(() => inputModel.ApplicationsToInstallDetail)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.ApplicationLicenses" class="form-check-input"/>
+                <label class="form-check">Licencias de aplicaciones a contratar para operar la campaña</label>
+                <ValidationMessage For="@(() => inputModel.ApplicationLicenses)" />
+            </div>
+
+            <div class="form-group">
+                <label for="ApplicationLicensesDetail">Detallar</label>
+                <InputText @bind-Value="inputModel.ApplicationLicensesDetail" class="form-control" id="ApplicationLicensesDetail" />
+                <ValidationMessage For="@(() => inputModel.ApplicationLicensesDetail)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.MailLicenses" class="form-check-input"/>
+                <label class="form-check">Licencias de mail(office 365)</label>
+                <ValidationMessage For="@(() => inputModel.MailLicenses)" />
+            </div>
+
+            <div class="form-group">
+                <label for="Quantity">Cantidad</label>
+                <InputNumber @bind-Value="inputModel.Quantity" class="form-control" id="Quantity" />
+                <ValidationMessage For="@(() => inputModel.Quantity)" />
+            </div>
+
+            <legend>VoIP</legend>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.InteractionsBackup" class="form-check-input"/>
+                <label class="form-check">Resguardo de interacciones(Voz)</label>
+                <ValidationMessage For="@(() => inputModel.InteractionsBackup)" />
+            </div>
+
+            <div class="form-group">
+                <label for="Period">Periodo</label>
+                <InputText @bind-Value="inputModel.Period" class="form-control" id="Period" />
+                <ValidationMessage For="@(() => inputModel.Period)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.VideoInteractionsBackup" class="form-check-input"/>
+                <label class="form-check">Resguardo de interacciones(Video)</label>
+        <ValidationMessage For="@(() => inputModel.VideoInteractionsBackup)" />
+            </div>
+
+            <div class="form-group">
+                <label for="VideoPeriod">Periodo</label>
+                <InputText @bind-Value="inputModel.VideoPeriod" class="form-control" id="VideoPeriod" />
+                <ValidationMessage For="@(() => inputModel.VideoPeriod)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.InteractionsDestruction" class="form-check-input"/>
+                <label class="form-check">Destrucción de interacciones</label>
+                <ValidationMessage For="@(() => inputModel.InteractionsDestruction)" />
+            </div>
+
+            <div class="form-group">
+                <label for="DestructionApplication">Aplicación para realizar destrucción</label>
+                <InputText @bind-Value="inputModel.DestructionApplication" class="form-control" id="DestructionApplication" />
+                <ValidationMessage For="@(() => inputModel.DestructionApplication)" />
+            </div>
+
+            <legend>Seguridad de la información</legend>
+
+            <div class="form-group">
+                <label for="SICertificationName">Nombre de certificación de SI para operar la campaña</label>
+                <InputText @bind-Value="inputModel.SICertificationName" class="form-control" id="SICertificationName" />
+                <ValidationMessage For="@(() => inputModel.SICertificationName)" />
+
+            </div>
+
+            <div class="form-group">
+                <label for="SensitiveData">Datos sensibles a procesar en la campaña</label>
+                <InputText @bind-Value="inputModel.SensitiveData" class="form-control" id="SensitiveData" />
+                <ValidationMessage For="@(() => inputModel.SensitiveData)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.PhysicalSeparation" class="form-check-input"/>
+                <label class="form-check
+                ">Separación física</label>
+                <ValidationMessage For="@(() => inputModel.PhysicalSeparation)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.AdditionalFilters" class="form-check-input"/>
+                <label class="form-check">Filtros adicionales para selección de personal</label>
+                <ValidationMessage For="@(() => inputModel.AdditionalFilters)" />
+            </div>
+
+            <div class="form-group">
+                <label for="AdditionalFiltersDetail">Detallar</label>
+                <InputText @bind-Value="inputModel.AdditionalFiltersDetail" class="form-control" id="AdditionalFiltersDetail" />
+                <ValidationMessage For="@(() => inputModel.AdditionalFiltersDetail)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.SIaudits" class="form-check-input"/>
+                <label class="form-check">Auditorías de SI a realizar</label>
+                <ValidationMessage For="@(() => inputModel.SIaudits)" />
+            </div>
+
+            <div class="form-group">
+                <label for="AuditFrequency">Frecuencia</label>
+                <InputText @bind-Value="inputModel.AuditFrequency" class="form-control" id="AuditFrequency" />
+                <ValidationMessage For="@(() => inputModel.AuditFrequency)" />
+            </div>
+
+            <legend>Base de datos</legend>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.DatabaseBackup" class="form-check-input"/>
+                <label class="form-check">Resguardo base de datos</label>
+                <ValidationMessage For="@(() => inputModel.DatabaseBackup)" />
+            </div>
+
+            <div class="form-group">
+                <label for="DatabasePeriod">Periodo</label>
+                <InputText @bind-Value="inputModel.DatabasePeriod" class="form-control" id="DatabasePeriod" />
+                <ValidationMessage For="@(() => inputModel.DatabasePeriod)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.DatabaseDestruction" class="form-check-input"/>
+                <label class="form-check">Destrucción de base de datos</label>
+                <ValidationMessage For="@(() => inputModel.DatabaseDestruction)" />
+            </div>
+
+            <div class="form-group">
+                <label for="DatabaseDestructionApplication">Aplicación para realizar destrucción</label>
+                <InputText @bind-Value="inputModel.DatabaseDestructionApplication" class="form-control" id="DatabaseDestructionApplication" />
+                <ValidationMessage For="@(() => inputModel.DatabaseDestructionApplication)" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.DatabaseHygienization" class="form-check-input"/>
+                <label class="form-check">Higienización de base de datos</label>
+                <ValidationMessage For="@(() => inputModel.DatabaseHygienization)" />
+            </div>
+
+            <div class="form-group">
+                <label for="HygienizationType">Tipo de higienización</label>
+                <InputText @bind-Value="inputModel.HygienizationType" class="form-control" id="HygienizationType" />
+                <ValidationMessage For="@(() => inputModel.HygienizationType)" />
+            </div>
+
+
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private InputModel inputModel = new InputModel();
+    private async Task OnValidSubmitAsync()
+    {
+        // Do something
+    }
+    private sealed class InputModel
+    {
+        // Infraestructura
+        // Conexión entre el cliente/Pentafon para el intercambio de datos/voz
+        [Required]
+        public bool ConnectionClientPentafon { get; set; }
+        // Tipo de conexión
+        [Required]
+        public string ConnectionType { get; set; }
+        // VPN
+        [Required]
+        public bool VPN { get; set; }
+        // Consumo estimado de ancho de banda
+        [Required]
+        public string BandwidthConsumption { get; set; }
+        // Sistema de telefonía a utilizar para las interacciones
+        [Required]
+        public string TelephonySystem { get; set; }
+        // Propietario
+        [Required]
+        public string Owner { get; set; }
+        // Nombre y versión de la aplicación
+        [Required]
+        public string ApplicationNameVersion { get; set; }
+        // Aplicaciones adicionales para operar la campaña
+        [Required]
+        public bool AdditionalApplications { get; set; }
+        // Detallar
+        [Required]
+        public string AdditionalApplicationsDetail { get; set; }
+        //Portabilidad de DID's
+        [Required]
+        public bool DIDPortability { get; set; }
+        // BCP/DRP
+        [Required]
+        public bool BCPDRP { get; set; }
+        // Porcentaje requerido
+        [Required]
+        public float RequiredPercentage { get; set; }
+
+        // Desarrollo
+        // CRM
+        [Required]
+        public bool CRM { get; set; }
+        // API
+        [Required]
+        public string API { get; set; }
+        // Web service
+        [Required]
+        public bool WebService { get; set; }
+        // Otro (detallar)
+        [Required]
+        public string Other { get; set; }
+
+        // Soporte
+        // Especificaciones de equipo diferentes de estándar Pentafon
+        [Required]
+        public bool DifferentEquipmentSpecifications { get; set; }
+        // Detallar
+        [Required]
+        public string DifferentEquipmentSpecificationsDetail { get; set; }
+        // Aplicaciones a instalar en los equipos
+        [Required]
+        public bool ApplicationsToInstall { get; set; }
+        // Detallar
+        [Required]
+        public string ApplicationsToInstallDetail { get; set; }
+        // Licencias de aplicaciones a contratar para operar la campaña
+        [Required]
+        public bool ApplicationLicenses { get; set; }
+        // Detallar
+        [Required]
+        public string ApplicationLicensesDetail { get; set; }
+        // Licencias de mail(office 365)
+        [Required]
+        public bool MailLicenses { get; set; }
+        // Cantidad
+        [Required]
+        public int Quantity { get; set; }
+
+        // VoIP
+        // Resguardo de interacciones(Voz)
+        [Required]
+        public bool InteractionsBackup { get; set; }
+        // Periodo
+        [Required]
+        public string Period { get; set; }
+        // Resguardo de interacciones(Video)
+        [Required]
+        public bool VideoInteractionsBackup { get; set; }
+        // Periodo
+        [Required]
+        public string VideoPeriod { get; set; }
+        // Destrucción de interacciones
+        [Required]
+        public bool InteractionsDestruction { get; set; }
+        // Aplicación para realizar destrucción
+        [Required]
+        public string DestructionApplication { get; set; }
+        
+        // Seguridad de la información
+        // Nombre de certificación de SI para operar la campaña Varchar(50)
+        [Required]
+        public string SICertificationName { get; set; }
+        // Datos sensibles a procesar en la campaña Varchar(100) 
+        [Required]
+        public string SensitiveData { get; set; }
+        // Separación física   Boolean
+        [Required]
+        public bool PhysicalSeparation { get; set; }
+        // Filtros adicionales para selección de personal  Boolean
+        [Required]
+        public bool AdditionalFilters { get; set; }
+        // Detallar Varchar(50) Socioeconómico
+        [Required]
+        public string AdditionalFiltersDetail { get; set; }
+        // Auditorías de SI a realizar Boolean
+        [Required]
+        public bool SIaudits { get; set; }
+        // Frecuencia Varchar(50)
+        [Required]
+        public string AuditFrequency { get; set; }
+        
+        // Base de datos
+        // Resguardo base de datos Boolean
+        [Required]
+        public bool DatabaseBackup { get; set; }
+        // Periodo Varchar(50)
+        [Required]
+        public string DatabasePeriod { get; set; }
+        // Destrucción de base de datos    Boolean
+        [Required]
+        public bool DatabaseDestruction { get; set; }
+        // Aplicación para realizar destrucción Varchar(50)
+        [Required]
+        public string DatabaseDestructionApplication { get; set; }
+        // Higienización de base de datos  Boolean
+        [Required]
+        public bool DatabaseHygienization { get; set; }
+        // Tipo de higienización   Varchar(50)
+        [Required]
+        public string HygienizationType { get; set; }
+
+    }
+}

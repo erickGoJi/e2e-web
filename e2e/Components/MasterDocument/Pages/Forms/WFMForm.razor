@@ -1,0 +1,408 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using e2e.Services
+
+@rendermode InteractiveAuto
+@inject ILogger<WFMForm> Logger
+
+@if (inputModel == null) 
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-10">
+            <EditForm Model="@inputModel" OnValidSubmit="OnValidSubmit" method="post" FormName="WFMForm">
+                <DataAnnotationsValidator />
+                <ValidationSummary class="text-danger" role="alert" />
+                <legend>Dimensionamiento</legend>
+                <div class="form-floating mb-5">
+                    <InputText @bind-Value="@inputModel.timeFrameAttentionOne" class="form-control" id="timeFrameAttentionOne" placeholder="timeFrameAttentionOne" />
+                    <label for="timeFrameAttentionOne">Ventana de antención - Lunes a Viernes</label>
+                    <ValidationMessage For="() => inputModel.timeFrameAttentionOne" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.timeFrameAttentionTwo" class="form-control" id="timeFrameAttentionTwo" placeholder="timeFrameAttentionTwo" />
+                    <label for="timeFrameAttentionTwo">Ventana de antención - Sábado</label>
+                    <ValidationMessage For="() => inputModel.timeFrameAttentionTwo" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.timeFrameAttentionThree" class="form-control" id="timeFrameAttentionThree" placeholder="timeFrameAttentionThree" />
+                    <label for="timeFrameAttentionThree">Ventana de antención - Domingo</label>
+                    <ValidationMessage For="() => inputModel.timeFrameAttentionThree" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.publicHoliday" class="form-control" id="publicHoliday" placeholder="publicHoliday" />
+                    <label for="publicHoliday">Días festivos</label>
+                    <ValidationMessage For="() => inputModel.publicHoliday" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputNumber @bind-Value="@inputModel.numberStationsWFM" class="form-control" id="numberStations" placeholder="numberStations" />
+                    <label for="numberStations">Número de estaciones</label>
+                    <ValidationMessage For="() => inputModel.numberStationsWFM" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.cities" class="form-control" id="cities" placeholder="cities" />
+                    <label for="cities">Ciudades</label>
+                    <ValidationMessage For="() => inputModel.cities" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.sites" class="form-control" id="sites" placeholder="sites" />
+                    <label for="sites">Sitios</label>
+                    <ValidationMessage For="() => inputModel.sites" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputNumber @bind-Value="@inputModel.interactionPerDays" class="form-control" id="interactionPerDays" placeholder="interactionPerDays" />
+                    <label for="interactionPerDays">Interacciones por día</label>
+                    <ValidationMessage For="() => inputModel.interactionPerDays" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputNumber @bind-Value="@inputModel.interactionPerMonths" class="form-control" id="interactionPerMonths" placeholder="interactionPerMonths" />
+                    <label for="interactionPerMonths">Interacciones por mes</label>
+                    <ValidationMessage For="() => inputModel.interactionPerMonths" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.ratioAgentsSupervisors" class="form-control" id="ratioAgentsSupervisors" placeholder="ratioAgentsSupervisors" />
+                    <label for="ratioAgentsSupervisors">Ratio Agentes - Supervisores</label>
+                    <ValidationMessage For="() => inputModel.ratioAgentsSupervisors" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.ratioAgentsCoordinators" class="form-control" id="ratioAgentsCoordinators" placeholder="ratioAgentsCoordinators" />
+                    <label for="ratioAgentsCoordinators">Ratio Agentes - Coordinadores</label>
+                    <ValidationMessage For="() => inputModel.ratioAgentsCoordinators" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.ratioAgentsQA" class="form-control" id="ratioAgentsQA" placeholder="ratioAgentsQA" />
+                    <label for="ratioAgentsQA">Ratio Agentes - QA</label>
+                    <ValidationMessage For="() => inputModel.ratioAgentsQA" class="text-danger" />
+                </div>
+
+                <legend>KPI's Ventas'</legend>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.serviceLevel" class="form-control" id="serviceLevel" placeholder="serviceLevel" />
+                    <label for="serviceLevel">Service Level</label>
+                    <ValidationMessage For="() => inputModel.serviceLevel" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.aba" class="form-control" id="aba" placeholder="aba" />
+                    <label for="aba">ABA</label>
+                    <ValidationMessage For="() => inputModel.aba" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.asa" class="form-control" id="asa" placeholder="asa" />
+                    <label for="asa">ASA</label>
+                    <ValidationMessage For="() => inputModel.asa" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.aht" class="form-control" id="aht" placeholder="aht" />
+                    <label for="aht">AHT</label>
+                    <ValidationMessage For="() => inputModel.aht" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.occupancy" class="form-control" id="occupancy" placeholder="occupancy" />
+                    <label for="occupancy">Occupancy</label>
+                    <ValidationMessage For="() => inputModel.occupancy" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.adherence" class="form-control" id="adherence" placeholder="adherence" />
+                    <label for="adherence">Adherencia</label>
+                    <ValidationMessage For="() => inputModel.adherence" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.fcr" class="form-control" id="fcr" placeholder="fcr" />
+                    <label for="fcr">FCR</label>
+                    <ValidationMessage For="() => inputModel.fcr" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.qa" class="form-control" id="qa" placeholder="qa" />
+                    <label for="qa">QA</label>
+                    <ValidationMessage For="() => inputModel.qa" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.nps" class="form-control" id="nps" placeholder="nps" />
+                    <label for="nps">NPS</label>
+                    <ValidationMessage For="() => inputModel.nps" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.csat" class="form-control" id="csat" placeholder="csat" />
+                    <label for="csat">CSAT</label>
+                    <ValidationMessage For="() => inputModel.csat" class="text-danger" />
+                </div>
+
+                <legend>KPI's Cobranza</legend>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.totalPromisesPayment" class="form-control" id="totalPromisesPayment" placeholder="totalPromisesPayment" />
+                    <label for="totalPromisesPayment">Total de promesas de pago</label>
+                    <ValidationMessage For="() => inputModel.totalPromisesPayment" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.totalPromisesPaymentAmount" class="form-control" id="totalPromisesPaymentAmount" placeholder="totalPromisesPaymentAmount" />
+                    <label for="totalPromisesPaymentAmount">$ promesas de pago</label>
+                    <ValidationMessage For="() => inputModel.totalPromisesPaymentAmount" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.avarageTicket" class="form-control" id="avarageTicket" placeholder="avarageTicket" />
+                    <label for="avarageTicket">Ticket promedio</label>
+                    <ValidationMessage For="() => inputModel.avarageTicket" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.promisesPerHour" class="form-control" id="promisesPerHour" placeholder="promisesPerHour" />
+                    <label for="promisesPerHour">Promesas por hora</label>
+                    <ValidationMessage For="() => inputModel.promisesPerHour" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.percentagePromises" class="form-control" id="percentagePromises" placeholder="percentagePromises" />
+                    <label for="percentagePromises">Porcentaje de recuperación</label>
+                    <ValidationMessage For="() => inputModel.percentagePromises" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.bucket" class="form-control" id="bucket" placeholder="bucket" />
+                    <label for="bucket">Bucket</label>
+                    <ValidationMessage For="() => inputModel.bucket" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.occupancyKPI" class="form-control" id="occupancyKPI" placeholder="occupancyKPI" />
+                    <label for="occupancyKPI">Occupancy</label>
+                    <ValidationMessage For="() => inputModel.occupancyKPI" class="text-danger" />
+                </div>
+
+                <div>
+                    <InputText @bind-Value="@inputModel.ahtTMO" class="form-control" id="ahtTMO" placeholder="ahtTMO" />
+                    <label for="ahtTMO">AHT/TMO</label>
+                    <ValidationMessage For="() => inputModel.ahtTMO" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="@inputModel.qaKPI" class="form-control" id="qaKPI" placeholder="qaKPI" />
+                    <label for="qaKPI">QA</label>
+                    <ValidationMessage For="() => inputModel.qaKPI" class="text-danger" />
+                </div>
+
+                <div>
+                    <InputText @bind-Value="@inputModel.contactEfectiveness" class="form-control" id="contactEfectiveness" placeholder="contactEfectiveness" />
+                    <label for="contactEfectiveness">Porc. contacto efectivo</label>
+                    <ValidationMessage For="() => inputModel.contactEfectiveness" class="text-danger" />
+                </div>
+                <br />
+                
+                <br />
+            </EditForm>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="w-100 btn btn-lg btn-warning">Guardar cambios</button>
+        </div>
+    </div>
+}
+
+
+@code {
+    private string? errorMessage;
+
+    [Parameter]
+    public Guid campaignId { get; set; }
+
+    [Parameter]
+    public bool IsActive { get; set; }
+
+    [Parameter]
+    public IMasterDocumentService MasterDocumentService { get; set; }
+
+    [SupplyParameterFromForm]
+    private InputModel inputModel { get; set; } = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (IsActive && inputModel == null)
+        {
+            // Load data only when the component is active
+            await LoadDataAsync();
+        }
+    }
+
+    private async Task LoadDataAsync()
+    {
+        Logger.LogInformation("WFMForm initialized");
+        var masterDocument = await MasterDocumentService.GetMasterDocumentsByCampaignID(campaignId, "Comercial", "Levantamiento Inicial", "WFM");
+        if (masterDocument != null)
+        {
+            inputModel = new InputModel
+                {
+                    timeFrameAttentionOne = masterDocument.timeFrameAttentionOne ?? string.Empty,
+                    timeFrameAttentionTwo = masterDocument.timeFrameAttentionTwo ?? string.Empty,
+                    timeFrameAttentionThree = masterDocument.timeFrameAttentionThree ?? string.Empty,
+                    publicHoliday = masterDocument.publicHoliday ?? string.Empty,
+                    numberStationsWFM = masterDocument.numberStationsWFM.HasValue
+                        ? masterDocument.numberStationsWFM.Value
+                        : 0,
+                    cities = masterDocument.cities ?? string.Empty,
+                    sites = masterDocument.sites ?? string.Empty,
+                    interactionPerDays = masterDocument.interactionPerDays.HasValue
+                       ? masterDocument.interactionPerDays.Value
+                       : 0,
+                    interactionPerMonths = masterDocument.interactionPerMonths.HasValue
+                           ? masterDocument.interactionPerMonths.Value
+                       : 0,
+                    ratioAgentsSupervisors = masterDocument.ratioAgentsSupervisors ?? string.Empty,
+                    ratioAgentsCoordinators = masterDocument.ratioAgentsCoordinators ?? string.Empty,
+                    ratioAgentsQA = masterDocument.ratioAgentsQA ?? string.Empty,
+                    serviceLevel = masterDocument.serviceLevel ?? string.Empty,
+                    aba = masterDocument.aba ?? string.Empty,
+                    asa = masterDocument.asa ?? string.Empty,
+                    aht = masterDocument.aht ?? string.Empty,
+                    occupancy = masterDocument.occupancy ?? string.Empty,
+                    adherence = masterDocument.adherence ?? string.Empty,
+                    fcr = masterDocument.fcr ?? string.Empty,
+                    qa = masterDocument.qa ?? string.Empty,
+                    nps = masterDocument.nps ?? string.Empty,
+                    csat = masterDocument.csat ?? string.Empty,
+                    totalPromisesPayment = masterDocument.totalPromisesPayment ?? string.Empty,
+                    totalPromisesPaymentAmount = masterDocument.totalPromisesPaymentAmount ?? string.Empty,
+                    avarageTicket = masterDocument.avarageTicket ?? string.Empty,
+                    promisesPerHour = masterDocument.promisesPerHour ?? string.Empty,
+                    percentagePromises = masterDocument.percentagePromises ?? string.Empty,
+                    bucket = masterDocument.bucket ?? string.Empty,
+                    occupancyKPI = masterDocument.occupancyKPI ?? string.Empty,
+                    ahtTMO = masterDocument.ahtTMO ?? string.Empty,
+                    qaKPI = masterDocument.qaKPI ?? string.Empty,
+                    contactEfectiveness = masterDocument.contactEfectiveness ?? string.Empty
+                };
+        }
+    }
+
+    private async Task OnValidSubmit()
+    {
+        Logger.LogInformation("WFMForm submitted");
+        var general = new GeneralModel()
+        {
+            timeFrameAttentionOne = inputModel.timeFrameAttentionOne,
+            timeFrameAttentionTwo = inputModel.timeFrameAttentionTwo,
+            timeFrameAttentionThree = inputModel.timeFrameAttentionThree,
+            publicHoliday = inputModel.publicHoliday,
+            numberStationsWFM = inputModel.numberStationsWFM,
+            cities = inputModel.cities,
+            sites = inputModel.sites,
+            interactionPerDays = inputModel.interactionPerDays,
+            interactionPerMonths = inputModel.interactionPerMonths,
+            ratioAgentsSupervisors = inputModel.ratioAgentsSupervisors,
+            ratioAgentsCoordinators = inputModel.ratioAgentsCoordinators,
+            ratioAgentsQA = inputModel.ratioAgentsQA,
+            serviceLevel = inputModel.serviceLevel,
+            aba = inputModel.aba,
+            asa = inputModel.asa,
+            aht = inputModel.aht,
+            occupancy = inputModel.occupancy,
+            adherence = inputModel.adherence,
+            fcr = inputModel.fcr,
+            qa = inputModel.qa,
+            nps = inputModel.nps,
+            csat = inputModel.csat,
+            totalPromisesPayment = inputModel.totalPromisesPayment,
+            totalPromisesPaymentAmount = inputModel.totalPromisesPaymentAmount,
+            avarageTicket = inputModel.avarageTicket,
+            promisesPerHour = inputModel.promisesPerHour,
+            percentagePromises = inputModel.percentagePromises,
+            bucket = inputModel.bucket,
+            occupancyKPI = inputModel.occupancyKPI,
+            ahtTMO = inputModel.ahtTMO,
+            qaKPI = inputModel.qaKPI,
+            contactEfectiveness = inputModel.contactEfectiveness
+        };
+        await MasterDocumentService.UpdateGeneralAsync(general, campaignId, "Comercial", "Levantamiento Inicial", "WFM");
+    }
+
+    private sealed class InputModel
+    {
+        
+        public string timeFrameAttentionOne { get; set; } = "";
+        
+        public string timeFrameAttentionTwo { get; set; } = "";
+        
+        public string timeFrameAttentionThree { get; set; } = "";
+        
+        public string publicHoliday { get; set; } = "";
+        
+        public int numberStationsWFM { get; set; }
+        
+        public string cities { get; set; } = "";
+        
+        public string sites { get; set; } = "";
+        
+        public int interactionPerDays { get; set; }
+        
+        public int interactionPerMonths { get; set; }
+        
+        public string ratioAgentsSupervisors { get; set; } = "";
+        
+        public string ratioAgentsCoordinators { get; set; } = "";
+        
+        public string ratioAgentsQA { get; set; } = "";
+        
+        public string serviceLevel { get; set; } = "";
+        
+        public string aba { get; set; } = "";
+        
+        public string asa { get; set; } = "";
+        
+        public string aht { get; set; } = "";
+        
+        public string occupancy { get; set; } = "";
+        
+        public string adherence { get; set; } = "";
+        
+        public string fcr { get; set; } = "";
+        
+        public string qa { get; set; } = "";
+        
+        public string nps { get; set; } = "";
+        
+        public string csat { get; set; } = "";
+        
+        public string totalPromisesPayment { get; set; } = "";
+        
+        public string totalPromisesPaymentAmount { get; set; } = "";
+        
+        public string avarageTicket { get; set; } = "";
+        
+        public string promisesPerHour { get; set; } = "";
+        
+        public string percentagePromises { get; set; } = "";
+        
+        public string bucket { get; set; } = "";
+        
+        public string occupancyKPI { get; set; } = "";
+        
+        public string ahtTMO { get; set; } = "";
+        
+        public string qaKPI { get; set; } = "";
+        
+        public string contactEfectiveness { get; set; } = "";
+    }
+}

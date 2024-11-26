@@ -1,0 +1,303 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using e2e.Services
+
+@rendermode InteractiveAuto
+
+@inject ILogger<GeneralForm> Logger
+
+@if (model == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <EditForm Model="model" method="post" OnValidSubmit="HandleValidSubmit" FormName="GeneralForm">
+                <DataAnnotationsValidator />
+                <ValidationSummary class="text-danger" role="alert" />
+                <legend>Tipo de campaña</legend>
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="isSell">
+                        <InputCheckbox @bind-Value="model.isSell" class="darker-border-checkbox form-check-input" />
+                        Ventas
+                    </label>
+                    <ValidationMessage For="() => model.isSell" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="isATC">
+                        <InputCheckbox @bind-Value="model.isATC" class="darker-border-checkbox form-check-input" />
+                        ATC
+                    </label>
+                    <ValidationMessage For="() => model.isATC" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="isCollection">
+                        <InputCheckbox @bind-Value="model.isCollection" class="darker-border-checkbox form-check-input" />
+                        Cobranza
+                    </label>
+                    <ValidationMessage For="() => model.isCollection" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="model.other" class="form-control" placeholder="Otro" />
+                    <label for="other" class="form-label">Otro</label>
+                    <ValidationMessage For="() => model.other" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputSelect @bind-Value="model.typeInteraction" class="form-select">
+                        <option value="">Selecciona un tipo de interacción</option>
+                        <option value="In">In</option>
+                        <option value="Out">Out</option>
+                        <option value="InOut">In/Out</option>
+                    </InputSelect>
+                    <ValidationMessage For="() => model.typeInteraction" class="text-danger" />
+                </div>
+
+                <legend>Canales a integrar</legend>
+
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="">
+                        <InputCheckbox @bind-Value="model.voice" class="darker-border-checkbox form-check-input" />
+                        Voz
+                    </label>
+                    <ValidationMessage For="() => model.voice" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="">
+                        <InputCheckbox @bind-Value="model.sms" class="darker-border-checkbox form-check-input" />
+                        SMS
+                    </label>
+                    <ValidationMessage For="() => model.sms" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="">
+                        <InputCheckbox @bind-Value="model.email" class="darker-border-checkbox form-check-input" />
+                        Email
+                    </label>
+                    <ValidationMessage For="() => model.email" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="">
+                        <InputCheckbox @bind-Value="model.whatsApp" class="darker-border-checkbox form-check-input" />
+                        WhatsApp
+                    </label>
+                    <ValidationMessage For="() => model.whatsApp" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="">
+                        <InputCheckbox @bind-Value="model.facebook" class="darker-border-checkbox form-check-input" />
+                        Facebook
+                    </label>
+                    <ValidationMessage For="() => model.facebook" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="">
+                        <InputCheckbox @bind-Value="model.blaster" class="darker-border-checkbox form-check-input" />
+                        Blaster
+                    </label>
+                    <ValidationMessage For="() => model.blaster" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="">
+                        <InputCheckbox @bind-Value="model.voiceBot" class="darker-border-checkbox form-check-input" />
+                        Voice Bot
+                    </label>
+                    <ValidationMessage For="() => model.voiceBot" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <InputSelect @bind-Value="model.voiceBotType" class="form-select">
+                        <option value="">Selecciona un tipo de interacción</option>
+                        <option value="Transaccional">Transaccional</option>
+                        <option value="Generativo">Generativo</option>
+                    </InputSelect>
+                    <ValidationMessage For="() => model.voiceBotType" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label class="form-label" for="">
+                        <InputCheckbox @bind-Value="model.chatBot" class="darker-border-checkbox form-check-input" />
+                        Chat Bot
+                    </label>
+                    <ValidationMessage For="() => model.chatBot" class="text-danger" />
+                </div>
+
+                <div class="checkbox mb-3">
+                    <InputSelect @bind-Value="model.chatBotType" class="form-select">
+                        <option value="">Selecciona un tipo de interacción</option>
+                        <option value="Transaccional">Transaccional</option>
+                        <option value="Generativo">Generativo</option>
+                    </InputSelect>
+                    <ValidationMessage For="() => model.chatBotType" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="model.otherChannel" class="form-control" placeholder="Otro canal" />
+                    <label for="otherChannel" class="form-label">Otro canal</label>
+                    <ValidationMessage For="() => model.otherChannel" class="text-danger" />
+                </div>
+
+                <legend>Alcance</legend>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="model.mainActivitiesOne" class="form-control" placeholder="Actividad principal 1" />
+                    <label for="mainActivitiesOne" class="form-label
+                    ">Actividad principal 1</label>
+                    <ValidationMessage For="() => model.mainActivitiesOne" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="model.mainActivitiesTwo" class="form-control" placeholder="Actividad principal 2" />
+                    <label for="mainActivitiesTwo" class="form-label">Actividad principal 2</label>
+                    <ValidationMessage For="() => model.mainActivitiesTwo" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="model.mainActivitiesThree" class="form-control" placeholder="Actividad principal 3" />
+                    <label for="mainActivitiesThree" class="form-label">Actividad principal 3</label>
+                    <ValidationMessage For="() => model.mainActivitiesThree" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputNumber @bind-Value="model.numberStations" class="form-control" placeholder="Número de estaciones" />
+                    <label for="numberStations" class="form-label">Número de estaciones</label>
+                    <ValidationMessage For="() => model.numberStations" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputDate @bind-Value="model.startDate" class="form-control" placeholder="Fecha de inicio" />
+                    <label for="startDate" class="form-label">Fecha de inicio</label>
+                    <ValidationMessage For="() => model.startDate" class="text-danger" />
+                </div>
+                <br />
+                <button type="submit" class="w-100 btn btn-lg btn-warning">Guardar cambios</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public Guid campaignId { get; set; }
+
+    [Parameter]
+    public bool IsActive { get; set; }
+
+    [Parameter]
+    public IMasterDocumentService MasterDocumentService { get; set; }
+
+    [SupplyParameterFromForm]
+    private GeneralModelForm model { get; set; } = new();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (IsActive && model == null)
+        {
+            // Load data only when the component is active
+            await LoadDataAsync();
+        }
+    }
+
+    private async Task LoadDataAsync()
+    {
+        Logger.LogInformation("GeneralForm: LoadDataAsync");
+        var general = await MasterDocumentService.GetMasterDocumentsByCampaignID(campaignId, "Comercial", "Levantamiento Inicial", "General");
+        if (general != null)
+        {
+            model = new GeneralModelForm()
+            {
+                isSell = general.isSell ?? false,
+                isATC = general.isATC ?? false,
+                isCollection = general.isCollection ?? false,
+                other = general.other ?? string.Empty,
+                typeInteraction = general.typeInteraction ?? string.Empty,
+                voice = general.voice ?? false,
+                sms = general.sms ?? false,
+                email = general.email ?? false,
+                whatsApp = general.whatsApp ?? false,
+                facebook = general.facebook ?? false,
+                blaster = general.blaster ?? false,
+                voiceBot = general.voiceBot ?? false,
+                voiceBotType = general.voiceBotType ?? string.Empty,
+                chatBot = general.chatBot ?? false,
+                chatBotType = general.chatBotType ?? string.Empty,
+                otherChannel = general.otherChannel ?? string.Empty,
+                mainActivitiesOne = general.mainActivitiesOne ?? string.Empty,
+                mainActivitiesTwo = general.mainActivitiesTwo ?? string.Empty,
+                mainActivitiesThree = general.mainActivitiesThree ?? string.Empty,
+                numberStations = general.numberStations ?? 0,
+                startDate = general.startDate ?? default
+            };
+        }
+    }
+
+    public async Task HandleValidSubmit()
+    {
+        // Handle the form submission
+        Logger.LogInformation("Submit form");
+        var general = new GeneralModel()
+        {
+            isSell = model.isSell,
+            isATC = model.isATC,
+            isCollection = model.isCollection,
+            other = model.other,
+            typeInteraction = model.typeInteraction,
+            voice = model.voice,
+            sms = model.sms,
+            email = model.email,
+            whatsApp = model.whatsApp,
+            facebook = model.facebook,
+            blaster = model.blaster,
+            voiceBot = model.voiceBot,
+            voiceBotType = model.voiceBotType,
+            chatBot = model.chatBot,
+            chatBotType = model.chatBotType,
+            otherChannel = model.otherChannel,
+            mainActivitiesOne = model.mainActivitiesOne,
+            mainActivitiesTwo = model.mainActivitiesTwo,
+            mainActivitiesThree = model.mainActivitiesThree,
+            numberStations = model.numberStations,
+            startDate = model.startDate
+        };
+        await MasterDocumentService.UpdateGeneralAsync(general, campaignId, "Comercial", "Levantamiento Inicial", "General");
+
+    }
+
+    private sealed class GeneralModelForm
+    {
+        public bool isSell { get; set; }        
+        public bool isATC { get; set; }        
+        public bool isCollection { get; set; }
+        public string other { get; set; } = "";        
+        public string typeInteraction { get; set; } = "";
+        public bool voice { get; set; }        
+        public bool sms { get; set; }        
+        public bool email { get; set; }        
+        public bool whatsApp { get; set; }        
+        public bool facebook { get; set; }
+        public bool blaster { get; set; }
+        public bool voiceBot { get; set; }
+        public string voiceBotType { get; set; } = "";
+        public bool chatBot { get; set; }
+        public string chatBotType { get; set; } = "";
+        public string otherChannel { get; set; } = "";
+        public string mainActivitiesOne { get; set; } = "";
+        public string mainActivitiesTwo { get; set; } = "";
+        public string mainActivitiesThree { get; set; } = "";
+        public int numberStations { get; set; }
+        public DateOnly startDate { get; set; }
+    }
+
+    
+}

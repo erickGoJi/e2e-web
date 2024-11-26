@@ -1,0 +1,430 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+<div class="row">
+    <div class="col-md-12">
+        <EditForm Model="inputModel" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+            <legend>Reportes ATC</legend>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TiemposOmniCanal" id="TiemposOmniCanal" class="form-control" />
+                <label class="form-label" for="TiemposOmniCanal">Tiempos Omni Canal</label>
+                <ValidationMessage For="@(() => inputModel.TiemposOmniCanal)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TiemposPorCanal" id="TiemposPorCanal" class="form-control" />
+                <label class="form-label" for="TiemposPorCanal">Tiempos por Canal</label>
+                <ValidationMessage For="@(() => inputModel.TiemposPorCanal)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TiemposPorCanalRT" id="TiemposPorCanalRT" class="form-control" />
+                <label class="form-label" for="TiemposPorCanalRT">Tiempos por Canal RT</label>
+                <ValidationMessage For="@(() => inputModel.TiemposPorCanalRT)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.InboundNvo" id="InboundNvo" class="form-control" />
+                <label class="form-label" for="InboundNvo">Inbound Nvo</label>
+                <ValidationMessage For="@(() => inputModel.InboundNvo)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.MotivosDeContacto" id="MotivosDeContacto" class="form-control" />
+                <label class="form-label" for="MotivosDeContacto">Motivos de contacto</label>
+                <ValidationMessage For="@(() => inputModel.MotivosDeContacto)" />
+            </div>
+
+        </EditForm>
+
+        <EditForm Model="inputModel" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+            <legend>Reportes Ventas</legend>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TiemposOmniCanalVentas" id="TiemposOmniCanalVentas" class="form-control" />
+                <label class="form-label" for="TiemposOmniCanalVentas">Tiempos Omni Canal</label>
+                <ValidationMessage For="@(() => inputModel.TiemposOmniCanalVentas)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TiemposPorCanalVentas" id="TiemposPorCanalVentas" class="form-control" />
+                <label class="form-label" for="TiemposPorCanalVentas">Tiempos por Canal</label>
+                <ValidationMessage For="@(() => inputModel.TiemposPorCanalVentas)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TiemposPorCanalRTVentas" id="TiemposPorCanalRTVentas" class="form-control" />
+                <label class="form-label" for="TiemposPorCanalRTVentas">Tiempos por Canal RT</label>
+                <ValidationMessage For="@(() => inputModel.TiemposPorCanalRTVentas)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.Productividad" id="Productividad" class="form-control" />
+                <label class="form-label" for="Productividad">Productividad</label>
+                <ValidationMessage For="@(() => inputModel.Productividad)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.InboundNvoVentas" id="InboundNvoVentas" class="form-control" />
+                <label class="form-label" for="InboundNvoVentas">Inbound Nvo</label>
+                <ValidationMessage For="@(() => inputModel.InboundNvoVentas)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.Bases3003" id="Bases3003" class="form-control" />
+                <label class="form-label" for="Bases3003">3003 Bases</label>
+                <ValidationMessage For="@(() => inputModel.Bases3003)" />
+            </div>
+
+         <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.AvanceDeLeads" id="AvanceDeLeads" class="form-control" />
+                <label class="form-label" for="AvanceDeLeads">Avance de Leads</label>
+                <ValidationMessage For="@(() => inputModel.AvanceDeLeads)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.VolDeMarcaciones" id="VolDeMarcaciones" class="form-control" />
+                <label class="form-label" for="VolDeMarcaciones">Vol.de Marcaciones</label>
+                <ValidationMessage For="@(() => inputModel.VolDeMarcaciones)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.ResumenDeBasesDeDatosOut" id="ResumenDeBasesDeDatosOut" class="form-control" />
+                <label class="form-label" for="ResumenDeBasesDeDatosOut">Resumen de bases de datos Out</label>
+                <ValidationMessage For="@(() => inputModel.ResumenDeBasesDeDatosOut)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.AnalisisOutbound" id="AnalisisOutbound" class="form-control" />
+                <label class="form-label" for="AnalisisOutbound">Análisis Outbound</label>
+                <ValidationMessage For="@(() => inputModel.AnalisisOutbound)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.ControlDeVentas" id="ControlDeVentas" class="form-control" />
+                <label class="form-label" for="ControlDeVentas">Control de Ventas</label>
+                <ValidationMessage For="@(() => inputModel.ControlDeVentas)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.EspecialCliente" id="EspecialCliente" class="form-control" />
+                <label class="form-label" for="EspecialCliente">Especial Cliente</label>
+                <ValidationMessage For="@(() => inputModel.EspecialCliente)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.Tranferencias" id="Tranferencias" class="form-control" />
+                <label class="form-label" for="Tranferencias">Tranferencias</label>
+                <ValidationMessage For="@(() => inputModel.Tranferencias)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.KpisPorAgente" id="KpisPorAgente" class="form-control" />
+                <label class="form-label" for="KpisPorAgente">Kpis por Agente</label>
+                <ValidationMessage For="@(() => inputModel.KpisPorAgente)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.MapaDeCalor" id="MapaDeCalor" class="form-control" />
+                <label class="form-label" for="MapaDeCalor">Mapa de Calor</label>
+                <ValidationMessage For="@(() => inputModel.MapaDeCalor)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TranferenciasQBO" id="TranferenciasQBO" class="form-control" />
+                <label class="form-label
+                " for="TranferenciasQBO">Tranferencias QBO</label>
+                <ValidationMessage For="@(() => inputModel.TranferenciasQBO)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.PorcentajeDeGrabaciones" id="PorcentajeDeGrabaciones" class="form-control" />
+                <label class="form-label" for="PorcentajeDeGrabaciones">Porcentaje de grabaciones</label>
+                <ValidationMessage For="@(() => inputModel.PorcentajeDeGrabaciones)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.CorteDeListasDeMarcacion" id="CorteDeListasDeMarcacion" class="form-control" />
+                <label class="form-label" for="CorteDeListasDeMarcacion">Corte de listas de marcacion</label>
+                <ValidationMessage For="@(() => inputModel.CorteDeListasDeMarcacion)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.ReporteDeCRM" id="ReporteDeCRM" class="form-control" />
+                <label class="form-label" for="ReporteDeCRM">Reporte de CRM</label>
+                <ValidationMessage For="@(() => inputModel.ReporteDeCRM)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.CortesPorHoraGNAAutos" id="CortesPorHoraGNAAutos" class="form-control" />
+                <label class="form-label" for="CortesPorHoraGNAAutos">Cortes por hora GNA- Autos</label>
+                <ValidationMessage For="@(() => inputModel.CortesPorHoraGNAAutos)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.CortesPorHoraInboundGNAAutos" id="CortesPorHoraInboundGNAAutos" class="form-control" />
+                <label class="form-label" for="CortesPorHoraInboundGNAAutos">Cortes por hora Inbound GNA- Autos</label>
+                <ValidationMessage For="@(() => inputModel.CortesPorHoraInboundGNAAutos)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.CortesPorHoraOutboundGNAAutos" id="CortesPorHoraOutboundGNAAutos" class="form-control" />
+                <label class="form-label" for="CortesPorHoraOutboundGNAAutos">Cortes por hora Outbund GNA- Autos</label>
+                <ValidationMessage For="@(() => inputModel.CortesPorHoraOutboundGNAAutos)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.FunnelDeVentasInbound" id="FunnelDeVentasInbound" class="form-control" />
+                <label class="form-label" for="FunnelDeVentasInbound">funnel de ventas - Inbound</label>
+                <ValidationMessage For="@(() => inputModel.FunnelDeVentasInbound)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.FunnelDeVentasOutbound" id="FunnelDeVentasOutbound" class="form-control" />
+                <label class="form-label" for="FunnelDeVentasOutbound">funnel de ventas - Outbound</label>
+                <ValidationMessage For="@(() => inputModel.FunnelDeVentasOutbound)" />
+            </div>
+
+        </EditForm>
+
+        <EditForm Model="inputModel" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+            <legend>Reportes Cobranza</legend>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TableroDeDireccion" id="TableroDeDireccion" class="form-control" />
+                <label class="form-label" for="TableroDeDireccion">Tablero de Dirección</label>
+                <ValidationMessage For="@(() => inputModel.TableroDeDireccion)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TiemposOmniCanalCobranza" id="TiemposOmniCanalCobranza" class="form-control" />
+                <label class="form-label
+                " for="TiemposOmniCanalCobranza">Tiempos Omni Canal</label>
+                <ValidationMessage For="@(() => inputModel.TiemposOmniCanalCobranza)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TiemposPorCanalCobranza" id="TiemposPorCanalCobranza" class="form-control" />
+                <label class="form-label" for="TiemposPorCanalCobranza">Tiempos por canal</label>
+                <ValidationMessage For="@(() => inputModel.TiemposPorCanalCobranza)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.TiemposOmiCanalRT" id="TiemposOmiCanalRT" class="form-control" />
+                <label class="form-label" for="TiemposOmiCanalRT">Tiempos Omi canal RT</label>
+                <ValidationMessage For="@(() => inputModel.TiemposOmiCanalRT)" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.InboundNuevoCobranza" id="InboundNuevoCobranza" class="form-control" />
+                <label class="form-label" for="InboundNuevoCobranza">Inbound Nvo</label>
+                <ValidationMessage For="@(() => inputModel.InboundNuevoCobranza)" />
+            </div>
+
+            @* VolDeMarcacionesCobranza *@
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.VolDeMarcacionesCobranza" id="VolDeMarcacionesCobranza" class="form-control" />
+                <label class="form-label" for="VolDeMarcacionesCobranza">Vol. de Marcaciones</label>
+                <ValidationMessage For="@(() => inputModel.VolDeMarcacionesCobranza)" />
+            </div>
+
+            @* PorcentajeDeGrabacionesCobranza *@
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.PorcentajeDeGrabacionesCobranza" id="PorcentajeDeGrabacionesCobranza" class="form-control" />
+                <label class="form-label" for="PorcentajeDeGrabacionesCobranza">Porcentaje de grabaciones</label>
+                <ValidationMessage For="@(() => inputModel.PorcentajeDeGrabacionesCobranza)" />
+            </div>
+
+            @* Bases3003Resumen *@
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.Bases3003Resumen" id="Bases3003Resumen" class="form-control" />
+                <label class="form-label" for="Bases3003Resumen">3003 Bases</label>
+                <ValidationMessage For="@(() => inputModel.Bases3003Resumen)" />
+            </div>
+
+            @* ExtractoDeCRM *@
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.ExtractoDeCRM" id="ExtractoDeCRM" class="form-control" />
+                <label class="form-label" for="ExtractoDeCRM">Extracto de CRM</label>
+                <ValidationMessage For="@(() => inputModel.ExtractoDeCRM)" />
+            </div>
+
+            @* ExtractoDeCDR *@
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.ExtractoDeCDR" id="ExtractoDeCDR" class="form-control" />
+                <label class="form-label" for="ExtractoDeCDR">Extracto de CDR</label>
+                <ValidationMessage For="@(() => inputModel.ExtractoDeCDR)" />
+            </div>
+
+            @* MapaDeCalorCobranza *@
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.MapaDeCalorCobranza" id="MapaDeCalorCobranza" class="form-control" />
+                <label class="form-label" for="MapaDeCalorCobranza">Mapa de Calor</label>
+                <ValidationMessage For="@(() => inputModel.MapaDeCalorCobranza)" />
+            </div>
+
+            @* WhatsAppClicks *@
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.WhatsAppClicks" id="WhatsAppClicks" class="form-control" />
+                <label class="form-label" for="WhatsAppClicks">WhatsApp Clicks</label>
+                <ValidationMessage For="@(() => inputModel.WhatsAppClicks)" />
+            </div>
+
+        </EditForm>
+
+    </div>
+</div>
+
+@code {
+    private InputModel inputModel = new InputModel();
+    
+    protected override async Task OnInitializedAsync()
+    {
+            
+    }
+    
+    private void OnValidSubmit()
+    {
+        // Handle the form submission
+    }
+    
+    private sealed class InputModel
+    {
+        // Reportes ATC
+        // Tiempos Omni Canal Varchar(50)
+        [Required]
+        public string TiemposOmniCanal { get; set; }
+        // Tiempos por Canal Varchar(50)
+        [Required]
+        public string TiemposPorCanal { get; set; }
+        // Tiempos por Canal RT    Varchar(50)
+        [Required]
+        public string TiemposPorCanalRT { get; set; }
+        // Inbound Nvo Varchar(50)
+        [Required]
+        public string InboundNvo { get; set; }
+        // Motivos de contacto Varchar(50)
+        [Required]
+        public string MotivosDeContacto { get; set; }
+
+
+        // Reportes Ventas
+        // Tiempos Omni Canal Varchar(50)
+        [Required]
+        public string TiemposOmniCanalVentas { get; set; }
+        // Tiempos por Canal Varchar(50)
+        [Required]
+        public string TiemposPorCanalVentas { get; set; }
+        // Tiempos por Canal RT    Varchar(50)
+        [Required]
+        public string TiemposPorCanalRTVentas { get; set; }
+        // Productividad Varchar(50)
+        [Required]
+        public string Productividad { get; set; }
+        // Inbound Nvo Varchar(50)
+        [Required]
+        public string InboundNvoVentas { get; set; }
+        // 3003 Bases Varchar(50)
+        [Required]
+        public string Bases3003 { get; set; }
+        // Avance de Leads Varchar(50)
+        [Required]
+        public string AvanceDeLeads { get; set; }
+        // Vol.de Marcaciones Varchar(50)
+        [Required]
+        public string VolDeMarcaciones { get; set; }
+        // Resumen de bases de datos Out   Varchar(50)
+        [Required]
+        public string ResumenDeBasesDeDatosOut { get; set; }
+        // Análisis Outbound   Varchar(50)
+        [Required]
+        public string AnalisisOutbound { get; set; }
+        // Control de Ventas Varchar(50)
+        [Required]
+        public string ControlDeVentas { get; set; }
+        // Especial Cliente    Varchar(50)
+        [Required]
+        public string EspecialCliente { get; set; }
+        // Tranferencias Varchar(50)
+        [Required]
+        public string Tranferencias { get; set; }
+        // Kpis por Agente Varchar(50)
+        [Required]
+        public string KpisPorAgente { get; set; }
+        // Mapa de Calor Varchar(50)
+        [Required]
+        public string MapaDeCalor { get; set; }
+        // Tranferencias QBO   Varchar(50)
+        [Required]
+        public string TranferenciasQBO { get; set; }
+        // Porcentaje de grabaciones Varchar(50)
+        [Required]
+        public string PorcentajeDeGrabaciones { get; set; }
+        // Corte de listas de marcacion Varchar(50)
+        [Required]
+        public string CorteDeListasDeMarcacion { get; set; }
+        // Reporte de CRM Varchar(50)
+        [Required]
+        public string ReporteDeCRM { get; set; }
+        // Cortes por hora GNA- Autos Varchar(50)
+        [Required]
+        public string CortesPorHoraGNAAutos { get; set; }
+        // Cortes por hora Inbound GNA- Autos Varchar(50)
+        [Required]
+        public string CortesPorHoraInboundGNAAutos { get; set; }
+        // Cortes por hora Outbund GNA- Autos Varchar(50)
+        [Required]
+        public string CortesPorHoraOutboundGNAAutos { get; set; }
+        // funnel de ventas - Inbound Varchar(50)
+        [Required]
+        public string FunnelDeVentasInbound { get; set; }
+        // funnel de ventas - Outbound Varchar(50)
+        [Required]
+        public string FunnelDeVentasOutbound { get; set; }
+
+        // Reportes Cobranza
+        // Tablero de Dirección Varchar(50)
+        [Required]
+        public string TableroDeDireccion { get; set; }
+        // Tiempos Omni Canal Varchar(50)
+        [Required]
+        public string TiemposOmniCanalCobranza { get; set; }
+        // Tiempos por canal Varchar(50)
+        [Required]
+        public string TiemposPorCanalCobranza { get; set; }
+        // Tiempos Omi canal RT    Varchar(50)
+        [Required]
+        public string TiemposOmiCanalRT { get; set; }
+        // Inbound nuevo   Varchar(50)
+        [Required]
+        public string InboundNuevoCobranza { get; set; }
+        // Vol.de marcaciones Varchar(50)
+        [Required]
+        public string VolDeMarcacionesCobranza { get; set; }
+        // Porcentaje de grabaciones Varchar(50)
+        [Required]
+        public string PorcentajeDeGrabacionesCobranza { get; set; }
+        // 3003 Bases Resumen  Varchar(50)
+        [Required]
+        public string Bases3003Resumen { get; set; }
+        // Extracto de CRM Varchar(50)
+        [Required]
+        public string ExtractoDeCRM { get; set; }
+        // Extracto de CDR Varchar(50)
+        [Required]
+        public string ExtractoDeCDR { get; set; }
+        // Mapa de Calor Varchar(50)
+        [Required]
+        public string MapaDeCalorCobranza { get; set; }
+        // WhatsApp Clicks Varchar(50)
+        [Required]
+        public string WhatsAppClicks { get; set; }
+
+    }
+}

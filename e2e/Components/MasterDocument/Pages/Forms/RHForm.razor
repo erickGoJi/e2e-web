@@ -1,0 +1,212 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+<div class="row">
+    <div class="col-md-12">
+        <EditForm Model="inputModel" FormName="RGForm" OnValidSubmit="OnValidSubmitAsync">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" />
+            <legend>
+                Atracción y selección
+            </legend>
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.descriptionProfileAngent" class="form-control" placeholder="Please enter your description profile agent." />
+                <label for="descriptionProfileAngent" class="form-label">Description profile agent</label>
+                <ValidationMessage For="() => inputModel.descriptionProfileAngent" class="text-danger" />
+            </div>
+            
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.descriptionProfileSupervisor" class="form-control" placeholder="Please enter your description profile supervisor." />
+                <label for="descriptionProfileSupervisor" class="form-label">Description profile supervisor</label>
+                <ValidationMessage For="() => inputModel.descriptionProfileSupervisor" class="text-danger" />
+            </div>
+            
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.lastEducationLevel" class="form-control" placeholder="Please enter your last education level." />
+                <label for="lastEducationLevel" class="form-label">Last education level</label>
+                <ValidationMessage For="() => inputModel.lastEducationLevel" class="text-danger" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.lastExperience" class="form-check-input" />
+                <label for="lastExperience" class="form-check-label">Last experience</label>
+                <ValidationMessage For="() => inputModel.lastExperience" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.additionalLanguages" class="form-control" placeholder="Please enter your additional languages." />
+                <label for="additionalLanguages" class="form-label">Additional languages</label>
+                <ValidationMessage For="() => inputModel.additionalLanguages" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.levelLanguages" class="form-control" placeholder="Please enter your level languages." />
+                <label for="levelLanguages" class="form-label">Level languages</label>
+                <ValidationMessage For="() => inputModel.levelLanguages" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.additionalSkills" class="form-control" placeholder="Please enter your additional skills." />
+                <label for="additionalSkills" class="form-label">Habilidades adicionales</label>
+                <ValidationMessage For="() => inputModel.additionalSkills" class="text-danger" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.certifications" class="form-check-input" />
+                <label for="certifications" class="form-check-label">Certificaciones</label>
+                <ValidationMessage For="() => inputModel.certifications" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.description" class="form-control" placeholder="Please enter your description." />
+                <label for="description" class="form-label">Describir</label>
+                <ValidationMessage For="() => inputModel.description" class="text-danger" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.bonusOrCompensation" class="form-check-input" />
+                <label for="bonusOrCompensation" class="form-check-label">
+                    Bonos y/o compensaciones adicionales al salario
+                </label>
+                <ValidationMessage For="() => inputModel.bonusOrCompensation" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.bonusOrCompensationDescription" class="form-control" placeholder="Please enter your bonus or compensation description." />
+                <label for="bonusOrCompensationDescription" class="form-label">Describir</label>
+                <ValidationMessage For="() => inputModel.bonusOrCompensationDescription" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="inputModel.rate" class="form-control" placeholder="Please enter your rate." />
+                <label for="rate" class="form-label">Rate</label>
+                <ValidationMessage For="() => inputModel.rate" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="inputModel.rateDescription" class="form-control" placeholder="Please enter your rate description." />
+                <label for="rateDescription" class="form-label">Rate capacitaicón</label>
+                <ValidationMessage For="() => inputModel.rateDescription" class="text-danger" />
+            </div>
+
+            <legend>Training</legend>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.trainTheTrainer" class="form-check-input" />
+                <label for="trainTheTrainer" class="form-check-label">Train the trainer</label>
+                <ValidationMessage For="() => inputModel.trainTheTrainer" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="inputModel.trainDuration" class="form-control" placeholder="Please enter your train duration." />
+                <label for="trainDuration" class="form-label">Duracion de training</label>
+                <ValidationMessage For="() => inputModel.trainDuration" class="text-danger" />
+            </div>
+
+            <div>
+                <InputNumber @bind-Value="inputModel.peopleToTrain" class="form-control" placeholder="Please enter your people to train." />
+                <label for="peopleToTrain" class="form-label">
+                    Máximo de personas a capacitar por ola
+                </label>
+                <ValidationMessage For="() => inputModel.peopleToTrain" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.requiredInstallations" class="form-control" placeholder="Please enter your required installations." />
+                <label for="requiredInstallations" class="form-label">
+                    Instalaciones para realizar capacitación
+                </label>
+                <ValidationMessage For="() => inputModel.requiredInstallations" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputCheckbox @bind-Value="inputModel.certification" class="form-check-input" />
+                <label for="certification" class="form-check-label">Certificación</label>
+                <ValidationMessage For="() => inputModel.certification" class="text-danger" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.accessToSystems" class="form-check-input" />
+                <label for="accessToSystems" class="form-check-label">
+                    Acceso a sistemas del cliente para capacitación
+                </label>
+                <ValidationMessage For="() => inputModel.accessToSystems" class="text-danger" />
+            </div>
+
+            <div class="form-check form-switch">
+                <InputCheckbox @bind-Value="inputModel.capacitationsOngoing" class="form-check-input" />
+                <label for="capacitationsOngoing" class="form-check-label">Capacitaciones ongoing</label>
+                <ValidationMessage For="() => inputModel.capacitationsOngoing" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputNumber @bind-Value="inputModel.durationCapacitations" class="form-control" placeholder="Please enter your duration capacitations." />
+                <label for="durationCapacitations" class="form-label">Duración de capacitaciones</label>
+                <ValidationMessage For="() => inputModel.durationCapacitations" class="text-danger" />
+            </div>
+
+            <div class="form-floating mb-3">
+                <InputText @bind-Value="inputModel.frequencyCapacitations" class="form-control" placeholder="Please enter your frequency capacitations." />
+                <label for="frequencyCapacitations" class="form-label">Frecuencia de capacitaciones</label>
+                <ValidationMessage For="() => inputModel.frequencyCapacitations" class="text-danger" />
+            </div>
+
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private InputModel inputModel = new();
+
+    private async Task OnValidSubmitAsync()
+    {
+        // Do something
+    }
+
+    private sealed class InputModel
+    {
+        [Required]
+        public string descriptionProfileAngent { get; set; } = string.Empty;
+        [Required]
+        public string descriptionProfileSupervisor { get; set; } = string.Empty;
+        [Required]
+        public string lastEducationLevel { get; set; } = string.Empty;
+        [Required]
+        public bool lastExperience { get; set; }
+        [Required]
+        public string additionalLanguages { get; set; } = string.Empty;
+        [Required]
+        public string levelLanguages { get; set; } = string.Empty;
+        [Required]
+        public string additionalSkills { get; set; } = string.Empty;
+        [Required]
+        public bool certifications { get; set; }
+        [Required]
+        public string description { get; set; } = string.Empty;
+        [Required]
+        public bool bonusOrCompensation { get; set; }
+        [Required]
+        public string bonusOrCompensationDescription { get; set; } = string.Empty;
+        [Required]
+        public decimal rate { get; set; }
+        [Required]
+        public decimal rateDescription { get; set; }
+        [Required]
+        public bool trainTheTrainer { get; set; }
+        [Required]
+        public int trainDuration { get; set; }
+        [Required]
+        public int peopleToTrain { get; set; }
+        [Required]
+        public string requiredInstallations { get; set; } = string.Empty;
+        [Required]
+        public bool certification { get; set; }
+        [Required]
+        public bool accessToSystems { get; set; }
+        [Required]
+        public bool capacitationsOngoing { get; set; }
+        [Required]
+        public int durationCapacitations { get; set; }
+        [Required]
+        public string frequencyCapacitations { get; set; } = string.Empty;
+    }
+}

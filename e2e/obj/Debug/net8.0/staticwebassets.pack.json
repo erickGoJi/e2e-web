@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\erick\\source\\repos\\e2e\\e2e\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\e2e.bundle.scp.css",
+      "PackagePath": "staticwebassets\\e2e.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\erick\\source\\repos\\e2e\\e2e\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\erick\\source\\repos\\e2e\\e2e\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\erick\\source\\repos\\e2e\\e2e\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\erick\\source\\repos\\e2e\\e2e\\wwwroot\\bootstrap\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\erick\\source\\repos\\e2e\\e2e\\wwwroot\\bootstrap\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\erick\\source\\repos\\e2e\\e2e\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.e2e.props",
+      "PackagePath": "build\\e2e.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.e2e.props",
+      "PackagePath": "buildMultiTargeting\\e2e.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.e2e.props",
+      "PackagePath": "buildTransitive\\e2e.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.e2e.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

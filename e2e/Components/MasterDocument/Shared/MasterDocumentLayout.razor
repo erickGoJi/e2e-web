@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+@layout GeneralLayout
+
+<h1>Documento Maestro</h1>
+
+<div>
+    <h2>Contenido del documento</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <MasterDocumentNavMenu />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <ErrorBoundary Context="Exception">
+                <ChildContent>
+                    @Body
+                </ChildContent>
+                <ErrorContent>
+                    <div class="alert bg-danger text-white alert-dismissible">
+                        @Exception.GetType(): @Exception.Message
+                        <button class="btn btn-primary" @onclick="() => Exception = null">Dismiss</button>
+                    </div>
+                </ErrorContent>
+            </ErrorBoundary>
+        </div>
+    </div>
+</div>

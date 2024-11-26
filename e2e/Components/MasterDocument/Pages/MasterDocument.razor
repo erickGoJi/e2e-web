@@ -1,0 +1,88 @@
+﻿@page "/MasterDocument/Details"
+
+@inject Services.IMasterDoc MasterDocumentService
+@inject Services.IMasterDocumentService MasterDocumentServiceDetails
+@inject ILogger<MasterDocument> Logger
+
+<PageTitle>Detalle de Documento Maestro</PageTitle>
+
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-end mb-3">
+            <button type="button" class="btn btn-success">Finalizar Captura</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button @onclick='() => SetActiveTab("general")'
+                        class="nav-link active"
+                        id="v-pills-general-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#v-pills-general"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-general"
+                        aria-selected="true">
+                    General
+                </button>
+                <button @onclick='() => SetActiveTab("wfm")' class="nav-link" id="v-pills-wfm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-wfm" type="button" role="tab" aria-controls="v-pills-wfm" aria-selected="false">WFM</button>
+                <button class="nav-link" id="v-pills-rh-tab" data-bs-toggle="pill" data-bs-target="#v-pills-rh" type="button" role="tab" aria-controls="v-pills-rh" aria-selected="false">RH</button>
+                <button class="nav-link" id="v-pills-ti-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ti" type="button" role="tab" aria-controls="v-pills-ti" aria-selected="false">TI</button>
+                <button class="nav-link" id="v-pills-qa-tab" data-bs-toggle="pill" data-bs-target="#v-pills-qa" type="button" role="tab" aria-controls="v-pills-qa" aria-selected="false">QA</button>
+                <button class="nav-link" id="v-pills-admin-tab" data-bs-toggle="pill" data-bs-target="#v-pills-admin" type="button" role="tab" aria-controls="v-pills-admin" aria-selected="false">Admin</button>
+                <button class="nav-link" id="v-pills-reports-tab" data-bs-toggle="pill" data-bs-target="#v-pills-reports" type="button" role="tab" aria-controls="v-pills-reports" aria-selected="false">Reportes</button>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade @(activeTab == "general" ? "show active" : "")" id="v-pills-general" role="tabpanel" aria-labelledby="v-pills-general-tab">
+                    <GeneralForm campaignId="id" IsActive="@(activeTab == "general")" MasterDocumentService="MasterDocumentServiceDetails" />
+                </div>
+                <div class="tab-pane fade @(activeTab == "wfm" ? "show active" : "")" id="v-pills-wfm" role="tabpanel" aria-labelledby="v-pills-wfm-tab">
+                    <WFMForm campaignId="id" IsActive="@(activeTab == "wfm")" MasterDocumentService="MasterDocumentServiceDetails" />
+                </div>
+                <div class="tab-pane fade" id="v-pills-rh" role="tabpanel" aria-labelledby="v-pills-rh-tab">
+                    <RHForm />
+                </div>
+                <div class="tab-pane fade" id="v-pills-ti" role="tabpanel" aria-labelledby="v-pills-ti-tab">
+                    <TIForm />
+                </div>
+                <div class="tab-pane fade" id="v-pills-qa" role="tabpanel" aria-labelledby="v-pills-qa-tab">
+                    <QAForm />
+                </div>
+                <div class="tab-pane fade" id="v-pills-admin" role="tabpanel" aria-labelledby="v-pills-admin-tab">
+                    <AdminForm />
+                </div>
+                <div class="tab-pane fade" id="v-pills-reports" role="tabpanel" aria-labelledby="v-pills-reports-tab">
+                    <ReportesForm />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<br />
+
+@code {
+    [SupplyParameterFromQuery]
+    private Guid id { get; set; }
+
+    private string activeTab = "general";
+
+    private void SetActiveTab(string tabName)
+    {
+        activeTab = tabName;
+        Logger.LogInformation($"Select tab: {tabName}");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Get data from the database
+
+    }
+
+}
