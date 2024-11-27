@@ -1041,3 +1041,4 @@ C:\Users\erick\source\repos\e2e\e2e.Client\bin\Debug\net8.0\wwwroot\_framework\B
 C:\Users\erick\source\repos\e2e\e2e.Client\bin\Debug\net8.0\Blazored.Modal.dll
 C:\Users\erick\source\repos\e2e\e2e.Client\obj\Debug\net8.0\webcil\Blazored.Modal.wasm
 C:\Users\erick\source\repos\e2e\e2e.Client\obj\Debug\net8.0\compressed\qoggh30lb0.gz
+C:\Users\erick\source\repos\e2e\e2e.Client\obj\Debug\net8.0\e2e.Client.sourcelink.json

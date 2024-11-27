@@ -175,3 +175,4 @@ C:\Users\erick\source\repos\e2e\e2e\obj\Debug\net8.0\e2e.pdb
 C:\Users\erick\source\repos\e2e\e2e\obj\Debug\net8.0\e2e.genruntimeconfig.cache
 C:\Users\erick\source\repos\e2e\e2e\obj\Debug\net8.0\ref\e2e.dll
 C:\Users\erick\source\repos\e2e\e2e\bin\Debug\net8.0\Blazored.Modal.dll
+C:\Users\erick\source\repos\e2e\e2e\obj\Debug\net8.0\e2e.sourcelink.json
